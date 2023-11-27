@@ -1,6 +1,7 @@
 <?php
 $paragraph = $_GET["paragraph"];
 $word = $_GET["word"];
+$paragraph_censored = str_replace($word, "<span class='text-danger'>***</span>", $paragraph);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,27 +31,54 @@ $word = $_GET["word"];
 <body>
     <main>
         <div class="container">
-            <h3>your paragraph:</h3>
-            <h5>
-                lenght:
-                <?php echo strlen($paragraph); ?> char <br>
-                words:
-                <?php echo str_word_count($paragraph) ?>
-            </h5>
-            <p>
+            <div class="row">
+                <div class="col-6">
+                    <h3>Your paragraph:</h3>
 
-                <?php echo $paragraph; ?>
+                    <p>
 
-            </p>
-            <h5>Censored paragraph</h5>
-            <p>
-                <?php echo str_replace($word, "***", $paragraph); ?>
-            </p>
+                        <?php echo $paragraph; ?>
 
-            <h3> you word:</h3>
-            <span>
-                <?php echo $word; ?>
-            </span>
+                    </p>
+                    <span>
+                        <span class="fw-bold">lenght:</span>
+                        <?php echo strlen($paragraph); ?> char <br>
+                        <span class="fw-bold">words:</span>
+                        <?php echo str_word_count($paragraph) ?>
+                    </span>
+                </div>
+                <div class="col-6">
+                    <h3><span class="text-danger">Censored</span> paragraph:</h3>
+                    <p>
+                        <?php echo $paragraph_censored; ?>
+                    </p>
+                    <span class="fw-bold">lenght:</span>
+                    <?php echo strlen(str_replace("<span class='text-danger'>***</span>", '***', $paragraph_censored)); ?>
+                    char <br>
+                    <h5> Your censor word:</h5>
+                    <span class="text-danger fw-bold">
+                        <?php echo $word; ?>
+                    </span>
+                </div>
+
+
+            </div>
+            <h3>New Input</h3>
+            <form action="censored.php" class="row g-3">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Paragraph</label>
+                    <input type="text" class="form-control" id="inputEmail4" name="paragraph">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Word to censor</label>
+                    <input type="text" class="form-control" id="inputPassword4" name="word">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Go</button>
+                </div>
+            </form>
+
+
 
         </div>
 
