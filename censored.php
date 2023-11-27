@@ -28,15 +28,33 @@ $word = $_GET["word"];
 </head>
 
 <body>
-    <h3>your paragraph</h3>
-    <p>
-        <?php echo $paragraph; ?>
-    </p>
+    <main>
+        <div class="container">
+            <h3>your paragraph:</h3>
+            <h5>
+                lenght:
+                <?php echo strlen($paragraph); ?> char <br>
+                words:
+                <?php echo str_word_count($paragraph) ?>
+            </h5>
+            <p>
 
-    <h3> you word:</h3>
-    <span>
-        <?php echo $word; ?>
-    </span>
+                <?php echo $paragraph; ?>
+
+            </p>
+            <h5>Censored paragraph</h5>
+            <p>
+                <?php echo str_replace($word, "***", $paragraph); ?>
+            </p>
+
+            <h3> you word:</h3>
+            <span>
+                <?php echo $word; ?>
+            </span>
+
+        </div>
+
+    </main>
 
 
 
