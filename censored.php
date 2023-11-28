@@ -64,7 +64,7 @@ $paragraph_censored = str_replace($word, "<span class='text-danger'>***</span>",
 
             </div>
             <h3>New Input</h3>
-            <form action="censored.php" class="row g-3">
+            <form action="censored.php" method="GET" class="row g-3">
                 <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">Paragraph</label>
                     <input type="text" class="form-control" id="inputEmail4" name="paragraph">
